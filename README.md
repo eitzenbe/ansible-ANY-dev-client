@@ -22,4 +22,4 @@ As next step connect to the VPN by running
 vpn start
 ```
 
-Which will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
+After supplying username, password and RSA token, this will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
