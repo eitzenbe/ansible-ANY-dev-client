@@ -15,3 +15,11 @@ and execute the public playbook to initialize and install all publicly available
 ```
 ansible -U https://github.com/eitzenbe/ansible-linux-dev-client [ <filename.yml> ]
 ```
+
+As next step connect to the VPN by running 
+
+```
+vpn start
+```
+
+Which will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
