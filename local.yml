@@ -1,14 +1,4 @@
 ---
-- name: "install ubuntu vpn software components"
-  hosts: all
-  become: yes
-  tasks:
-    - name: "ensure vpn software is installed"
-      apt:
-        name:
-          - openconnect
-        state: present
-
 - name: "install ubuntu native software components"
   hosts: all
   become: yes
@@ -17,6 +7,7 @@
       apt:
         name:
           - ansible
+          - openconnect
           - bash
           - curl
           - firefox
