@@ -41,7 +41,7 @@
       lineinfile:
         path: /etc/environment
         regexp: 'JAVA_HOME'
-        line: 'JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'
+        line: 'JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/'
 
 - name: "install non-native software components"
   hosts: all
