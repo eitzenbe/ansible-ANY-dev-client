@@ -1,0 +1,31 @@
+---
+
+# Gradle major version
+gradle_v_major: "5"
+
+# Gradle major version
+gradle_v_minor: "5.1"
+
+# Gradle default version
+gradle_default: true
+
+# Gradle user
+gradle_user: "root"
+
+# Gradle group
+gradle_group: "root"
+
+# Gradle required packages
+gradle_required_packages: []
+
+# Gradle local repository
+gradle_local_repository: "{{ '/root' if gradle_user == 'root' else '/home/' + gradle_user }}/.gradle"
+
+# Gradle properties
+gradle_properties: []
+#  - key: "key1"
+#    value: "value1"
+#  - key: "key2"
+#    value: "value2"
+#  - key: "key3"
+#    value: "value3"

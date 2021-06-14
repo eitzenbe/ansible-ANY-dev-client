@@ -1,0 +1,15 @@
+---
+- name: configure JDKs
+  become: yes
+  intellij_configure_jdk:
+    intellij_user_config_dir: '{{ intellij_user_config_dir }}'
+    jdk_name: '{{ item.1.name }}'
+    jdk_home: '{{ item.1.home }}'
+    owner: '{{ item.0.username }}'
+    group: '{{ item.0.intellij_group | default(item.0.username) }}'
+  with_subelements:
+    - '{{ users }}'
+    - intellij_jdks
+    - skip_missing: yes
+  loop_control:
+    label: '{{ item.0.username }}: {{ item.1.name }}'

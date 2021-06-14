@@ -1,0 +1,6 @@
+---
+
+- name: ({{ ansible_distribution }}) Download Gradle Archive ( URL = {{ url }}, DEST = {{ downloaded_file }})
+  get_url:
+   url: "{{ url }}"
+   dest: "{{ downloaded_file }}"

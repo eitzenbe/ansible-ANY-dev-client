@@ -1,0 +1,50 @@
+---
+# Initialize the Language
+language: python
+
+# Declare Docker Service to be used in the build
+services: docker
+
+# Environments variables for test
+env:
+    # Global
+    global:
+        - ROLE_NAME: gradle
+        - AUTHOR: jetune
+    matrix:
+        - MOLECULE_DISTRO: kubecloudsas/docker-ansible-test:v1.1.0-centos7-py3
+          MOLECULE_NAME: centos7
+        - MOLECULE_DISTRO: kubecloudsas/docker-ansible-test:v1.1.0-xenial-py3
+          MOLECULE_NAME: xenial
+        - MOLECULE_DISTRO: kubecloudsas/docker-ansible-test:v1.1.0-bionic-py3
+          MOLECULE_NAME: bionic
+
+# Before install actions
+before_install:
+    - sudo docker pull ${MOLECULE_DISTRO}
+
+# Installation actions
+install:
+    # Install Test tools
+    - pip3 install ansible molecule docker molecule-docker flake8
+
+    # Uninstall testinfra 1.19.0
+    - pip3 uninstall -y testinfra==1.19.0
+
+    # Install testinfra 3.0.5
+    - pip3 install testinfra==3.0.5
+
+# Test scripts
+script:
+    # Check ansible version
+    - ansible --version
+
+    # Check ñolecule version
+    - molecule --version
+
+    # Run Tests
+    - molecule test --all
+
+# Norifications
+notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/

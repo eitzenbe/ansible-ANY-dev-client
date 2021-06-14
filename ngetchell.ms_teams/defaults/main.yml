@@ -1,0 +1,4 @@
+---
+# defaults file for ms-teams
+teams_install: true
+teams_insiders_install: false

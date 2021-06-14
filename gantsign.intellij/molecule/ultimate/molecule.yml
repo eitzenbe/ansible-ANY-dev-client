@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
+
+platforms:
+  - name: ansible-role-intellij-ultimate-ubuntu
+    image: ubuntu:16.04
+    dockerfile: ../default/Dockerfile.j2
+
+provisioner:
+  name: ansible
+
+verifier:
+  name: testinfra
+  directory: ../default/tests

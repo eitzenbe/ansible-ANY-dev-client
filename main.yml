@@ -1,0 +1,71 @@
+---
+- name: "install ubuntu vpn software components"
+  hosts: all
+  become: yes  
+  tasks:
+  - name: "ensure vpn software is installed"
+    apt:
+      name:
+        - openconnect
+      state: present
+      
+- name: "install ubuntu native software components"
+  hosts: all
+  become: yes
+  tasks:
+  - name: "ensure basic developer software is installed"
+    apt:
+      name:        
+        - ansible
+        - bash
+        - curl
+        - firefox
+        - gpg
+        - gimp
+        - git
+        - graphviz
+        - inkscape
+        - maven
+        - openjdk-11-jdk
+        - plantuml
+        - python2
+        - python3
+        - openssh-client
+        - openssl
+        - rdesktop
+        - thunderbird
+        - ubuntu-desktop
+        - virtualbox
+        - vlc
+        - wireshark
+        - wget
+      state: present
+      update_cache: yes
+
+- name: "Basic Java settings"
+  hosts: all
+  become: yes
+  tasks:
+  - name: "set JAVA_HOME"
+      lineinfile: 
+        path: /etc/environment
+        regexp: 'JAVA_HOME'
+        line: 'JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'
+
+- name: "install non-native software components"
+  hosts: all
+  become: yes
+  roles:
+    - pixelart.chrome
+    - ngetchell.vscode
+    - geerlingguy.docker
+    - alvistack.libreoffice
+    - ngetchell.ms_teams
+    - role: jetune.gradle
+      vars:
+        v_major: 5
+        v_minor: 5.1
+        is_default: true
+    - role: gantsign.intellij
+      vars:
+        intellij_edition: ultimate

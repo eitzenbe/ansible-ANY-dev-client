@@ -1,0 +1,7 @@
+{% if gradle_properties is defined and gradle_properties|length > 0 %}
+{% for gradle_property in gradle_properties %}
+# Property {{ gradle_property.key }}
+{{ gradle_property.key }} = {{ gradle_property.value }}
+
+{% endfor %}
+{% endif %}

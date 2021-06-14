@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Install test packages
+      package:
+        name: openssl
+      register: _install
+      until: _install is succeeded
+      retries: 3

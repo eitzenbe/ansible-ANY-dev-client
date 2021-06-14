@@ -1,0 +1,16 @@
+---
+# Install Apache Maven main tasks on Supported system
+- name: Install Apache Maven main tasks on Supported system
+  block:
+
+   # Include Initialize tasks (Linux)
+   - name: Include Initialize tasks
+     include_tasks: "initialize.yml"
+
+   # Include Download tasks (Linux)
+   - name: Include download tasks
+     include_tasks: "download.yml"
+
+   # Include Setup tasks (Linux)
+   - name: Include install tasks
+     include_tasks: "install.yml"

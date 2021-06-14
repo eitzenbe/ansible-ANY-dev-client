@@ -1,0 +1,17 @@
+---
+- name: install plugins
+  become: yes
+  intellij_install_plugin:
+    plugin_manager_url: '{{ intellij_plugin_manager_url }}'
+    intellij_home: '{{ intellij_install_dir }}'
+    intellij_user_plugins_dir: '{{ intellij_user_plugins_dir }}'
+    owner: '{{ item.0.username }}'
+    group: '{{ item.0.intellij_group | default(item.0.username) }}'
+    plugin_id: '{{ item.1 }}'
+    download_cache: '{{ intellij_download_dir }}'
+  with_subelements:
+    - '{{ users }}'
+    - intellij_plugins
+    - skip_missing: yes
+  loop_control:
+    label: '{{ item.0.username }}: {{ item.1 }}'

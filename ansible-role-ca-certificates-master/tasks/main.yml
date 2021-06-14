@@ -1,0 +1,26 @@
+---
+- name: Load OS Family specific defaults
+  include_vars: "defaults-{{ ansible_os_family }}.yml"
+
+- name: Install CA Certificates package
+  become: true
+  package:
+    name: ca-certificates
+    state: present
+
+- name: Enable Cert Management (RHEL 6)
+  include_tasks: ca_certificates-RedHat-6.yml
+  when:
+    - ansible_os_family | lower == 'redhat'
+    - ansible_distribution_major_version | int == 6
+
+- name: Install Trusted
+  include_tasks: ca_certificates-trusted.yml
+
+- name: Update CA Certificates
+  become: true
+  command: "{{ ca_certificates_handler }}"
+  when:
+    - _ca_certificates_copied is changed or
+      _ca_certificates_written is changed
+    - ca_certificates_update | bool

@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: John Freeman
+  role_name: intellij
+  description: Role for installing the IntelliJ IDEA IDE.
+  company: GantSign Ltd.
+  license: MIT
+  min_ansible_version: 2.8
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - development
+    - ide
+    - idea
+    - intellij
+    - java
+dependencies: []

@@ -1,0 +1,40 @@
+---
+- name: Converge
+  hosts: all
+
+  roles:
+   - role: jetune.java
+     vars:
+      from_repo: false
+      implementation: OPENJDK
+      v_major: 8
+      v_minor: 40
+      build: 25
+      os: linux
+      arch: x64
+      date: 10_feb_2015
+      checksum: md5:4980716637f353cfb27467d57f2faf9b
+      alternative_priority: 300
+      is_default: true
+
+   - role: ansible-role-gradle
+     vars:
+      gradle_v_major: "4"
+      gradle_v_minor: "10.3"
+      gradle_default: true
+      gradle_local_repository: "/opt/gradle/repository"
+      gradle_user: "root"
+      gradle_group: "root"
+      gradle_properties:
+       - key: "reporitorySnaphots"
+         value: "https://artifact.lab.kube-cloud.be/repository/maven-snapshots"
+       - key: "reporitoryReleases"
+         value: "https://artifact.lab.kube-cloud.be/repository/maven-releases"
+       - key: "reporitoryPublic"
+         value: "https://artifact.lab.kube-cloud.be/repository/maven-public"
+       - key: "reporitoryUser"
+         value: "repoUserName"
+       - key: "reporitoryToken"
+         value: "repoUserToken"
+      gradle_required_packages:
+       - "unzip"

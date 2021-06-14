@@ -1,0 +1,28 @@
+---
+- name: create IntelliJ IDEA user config directory
+  become: yes
+  file:
+    dest: '~{{ user.username }}/{{ intellij_user_config_dir }}'
+    state: directory
+    owner: '{{ user.username }}'
+    group: '{{ user.intellij_group | default(user.username) }}'
+    mode: 'ug=rwx,o=rx'
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user.username }}'
+
+- name: configure disabled plugins
+  become: yes
+  template:
+    src: disabled_plugins.txt.j2
+    dest: '~{{ user.username }}/{{ intellij_user_config_dir }}/disabled_plugins.txt'
+    force: no
+    owner: '{{ user.username }}'
+    group: '{{ user.intellij_group | default(user.username) }}'
+    mode: 'ug=rw,o=r'
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user.username }}'
+  when: "user.intellij_disabled_plugins is defined and user.intellij_disabled_plugins not in (None, '', omit)"

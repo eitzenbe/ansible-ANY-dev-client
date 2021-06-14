@@ -1,0 +1,28 @@
+---
+
+- name: ({{ ansible_distribution }}) Check Gradle required parameters (gradle_v_major, gradle_v_minor)
+  fail:
+   msg: "Vérifier les paramètres obligatoires : (gradle_v_major, gradle_v_minor)"
+  when: >
+   gradle_v_major is not defined or
+   gradle_v_minor is not defined
+
+- name: ({{ ansible_distribution }}) Check Gradle minimum version (gradle_v_major >= 3)
+  fail:
+   msg: "Vérifier la version de gradle que vous souhaitez installer : MIN V3+"
+  when:
+   gradle_v_major|int < 3
+
+- name: ({{ ansible_distribution }}) Define commons facts
+  set_fact:
+   gradle_required_packages: "{{ gradle_required_packages | default([]) }}"
+   unarchive_parent_dir: "/opt/gradle"
+   install_dir: "/opt/gradle/gradle-{{ gradle_v_major }}.{{ gradle_v_minor }}"
+   downloaded_file: "/tmp/gradle-{{ gradle_v_major }}.{{ gradle_v_minor }}.zip"
+   gradle_default: "{{ gradle_default | default(true) }}"
+   alternatives:
+    - 'gradle'
+
+- name: ({{ ansible_distribution }}) Define version specific facts [Version = {{ gradle_v_major }}.{{ gradle_v_minor }}]
+  set_fact:
+   url: "https://downloads.gradle.org/distributions/gradle-{{ gradle_v_major }}.{{ gradle_v_minor }}-all.zip"

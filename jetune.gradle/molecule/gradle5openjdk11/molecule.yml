@@ -1,0 +1,48 @@
+---
+dependency:
+    name: galaxy
+    options:
+        role-file: molecule/requirement.yml
+        ignore-certs: true
+        ignore-errors: true
+driver:
+    name: docker
+lint: |
+    yamllint .
+platforms:
+    - name: ${MOLECULE_NAME:-bionic}
+      image: "${MOLECULE_DISTRO:-kubecloudsas/docker-ansible-test:v1.1.0-xenial-py3}"
+      command: ${MOLECULE_DOCKER_COMMAND:-""}
+      volumes:
+          - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      privileged: true
+      pre_build_image: true
+
+provisioner:
+    name: ansible
+    env:
+        ANSIBLE_ROLES_PATH: molecule/roles
+    lint:
+        name: ansible-lint
+        options:
+            force-color: true
+    playbooks:
+        converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
+scenario:
+    name: gradle5openjdk11
+    test_sequence:
+        - lint
+        - dependency
+        - syntax
+        - create
+        - prepare
+        - converge
+        - idempotence
+        - side_effect
+        - verify
+        - cleanup
+        - destroy
+verifier:
+    name: testinfra
+    lint:
+        name: flake8

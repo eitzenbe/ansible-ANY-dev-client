@@ -1,0 +1,43 @@
+---
+- name: create IntelliJ IDEA user options directory
+  become: yes
+  file:
+    dest: '~{{ user.username }}/{{ intellij_user_config_dir }}/options'
+    state: directory
+    owner: '{{ user.username }}'
+    group: '{{ user.intellij_group | default(user.username) }}'
+    mode: 'ug=rwx,o=rx'
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user.username }}'
+
+- name: configure CodeStyleSettingsManager
+  become: yes
+  template:
+    src: code.style.schemes.j2
+    dest: '~{{ user.username }}/{{ intellij_user_config_dir }}/options/code.style.schemes'
+    force: no
+    owner: '{{ user.username }}'
+    group: '{{ user.intellij_group | default(user.username) }}'
+    mode: 'ug=rw,o=r'
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user.username }}'
+  when: user.intellij_default_codestyle is defined or user.intellij_active_codestyle is defined
+
+- name: configure CodeStyleSchemeSettings
+  become: yes
+  template:
+    src: code.style.schemes.xml.j2
+    dest: '~{{ user.username }}/{{ intellij_user_config_dir }}/options/code.style.schemes.xml'
+    force: no
+    owner: '{{ user.username }}'
+    group: '{{ user.intellij_group | default(user.username) }}'
+    mode: 'ug=rw,o=r'
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user.username }}'
+  when: user.intellij_default_codestyle is defined or user.intellij_active_codestyle is defined
