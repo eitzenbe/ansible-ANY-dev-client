@@ -1,44 +1,78 @@
 ---
-- name: "install ubuntu native software components part 1"
+- name: "install basic ubuntu components"
   hosts: all
   become: yes
   tasks:
-    - name: "ensure basic developer software part 1 is installed"
+    - name: "ensure basic ubuntu components is installed"
       apt:
         name:
-          - ansible
           - openconnect
+          - network-manager-openconnect
+          - network-manager-openconnect-gnome
           - bash
           - curl
           - gpg
           - git
-          - graphviz
           - wget
+          - openssh-client
+          - openssl
+          - ubuntu-desktop
         state: present
         update_cache: yes
 
-- name: "install ubuntu native software components part 2"
+- name: "install ubuntu multimedia components"
   hosts: all
   become: yes
   tasks:
-    - name: "ensure basic developer software part 2 is installed"
+    - name: "ensure ubuntu multimedia components is installed"
+      apt:
+        name:
+          - graphviz
+          - gimp
+          - inkscape
+          - vlc
+        state: present
+        update_cache: yes
+
+- name: "install ubuntu mozilla components"
+  hosts: all
+  become: yes
+  tasks:
+    - name: "ensure ubuntu mozilla components is installed"
       apt:
         name:
           - firefox
-          - inkscape
+          - thunderbird
+        state: present
+        update_cache: yes
+
+
+- name: "install ubuntu misc components"
+  hosts: all
+  become: yes
+  tasks:
+    - name: "ensure ubuntu misc components is installed"
+      apt:
+        name:
+          - rdesktop
+          - virtualbox
+        state: present
+        update_cache: yes
+
+- name: "install java & dev components"
+  hosts: all
+  become: yes
+  tasks:
+    - name: "ensure java & dev components is installed"
+      apt:
+        name:
+          - wireshark
           - maven
           - openjdk-11-jdk
           - plantuml
           - python2
           - python3
-          - openssh-client
-          - openssl
-          - rdesktop
-          - thunderbird
-          - ubuntu-desktop
-          - virtualbox
-          - vlc
-          - wireshark
+          - telnet
         state: present
         update_cache: yes
 
