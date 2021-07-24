@@ -1,20 +1,30 @@
 ---
-- name: "install ubuntu native software components"
+- name: "install ubuntu native software components part 1"
   hosts: all
   become: yes
   tasks:
-    - name: "ensure basic developer software is installed"
+    - name: "ensure basic developer software part 1 is installed"
       apt:
         name:
           - ansible
           - openconnect
           - bash
           - curl
-          - firefox
           - gpg
-          - gimp
           - git
           - graphviz
+          - wget
+        state: present
+        update_cache: yes
+
+- name: "install ubuntu native software components part 2"
+  hosts: all
+  become: yes
+  tasks:
+    - name: "ensure basic developer software part 2 is installed"
+      apt:
+        name:
+          - firefox
           - inkscape
           - maven
           - openjdk-11-jdk
@@ -29,9 +39,9 @@
           - virtualbox
           - vlc
           - wireshark
-          - wget
         state: present
         update_cache: yes
+
 
 - name: "Basic Java settings"
   hosts: all
