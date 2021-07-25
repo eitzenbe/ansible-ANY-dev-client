@@ -67,6 +67,7 @@
       apt:
         name:
           - wireshark
+          - tshark
           - maven
           - openjdk-11-jdk
           - plantuml
