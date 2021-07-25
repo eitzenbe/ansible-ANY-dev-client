@@ -122,9 +122,11 @@
       url: https://www.vitexsoftware.cz/info@vitexsoftware.cz.gpg.key
       state: present
   - name: "add repo"
-    apt_repository:
-      repo: deb http://www.vitexsoftware.cz/ stable main
-      state: present
+    ansible.builtin.shell: echo 'deb http://v.s.cz/ stable main' > keystore_explorer.list
+      args:
+        chdir: /etc/apt/sources.list.d/
+  - name: "apt update"
+    ansible.builtin.shell: apt update
   - name: "install keystore explorer"
     apt:
       name:
