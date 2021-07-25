@@ -123,8 +123,8 @@
       state: present
   - name: "add repo"
     ansible.builtin.shell: echo 'deb http://v.s.cz/ stable main' > keystore_explorer.list
-      args:
-        chdir: /etc/apt/sources.list.d/
+    args:
+      chdir: /etc/apt/sources.list.d/
   - name: "apt update"
     ansible.builtin.shell: apt update
   - name: "install keystore explorer"
