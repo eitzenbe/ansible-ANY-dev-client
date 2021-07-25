@@ -112,7 +112,27 @@
     - role: gantsign.intellij
       vars:
         intellij_edition: ultimate
-        
+
+- name: "add keystore explorer"
+  hosts: all
+  become: yes
+  tasks:
+  - name: "add repo key"
+    ansible.builtin.apt_key:
+      url: http://v.s.cz/info@vitexsoftware.cz.gpg.key
+      state: present
+  - name: "add repo"
+    apt_repository:
+      repo: deb http://v.s.cz/ stable main
+      state: present
+  - name: "install keystore explorer"
+    apt:
+      name:
+        - keystore-explorer
+      state: present
+      update_cache: yes  
+
+
 - name: "install simple gematik vpn"
   hosts: all
   tasks:
