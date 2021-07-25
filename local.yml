@@ -117,24 +117,10 @@
   hosts: all
   become: yes
   tasks:
-  - name: "add repo key"
-    ansible.builtin.apt_key:
-      url: https://www.vitexsoftware.cz/info@vitexsoftware.cz.gpg.key
-      state: present
-      
-  - name: "add repo entry"
-    shell: 
-      "echo 'deb http://v.s.cz/ stable main' > /etc/apt/sources.list.d/keystore_explorer.list"
-
-  - name: "apt update"
-    shell: apt update
-
-  - name: "install keystore explorer"
+    - name: Install prince
     apt:
-      name:
-        - keystore-explorer
-      state: present
-      update_cache: yes  
+      deb: https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.4/kse_5.4.4_all.deb
+
 
 
 - name: "install simple gematik vpn"
