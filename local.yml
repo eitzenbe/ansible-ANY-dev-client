@@ -119,7 +119,7 @@
   tasks:
   - name: "add repo key"
     ansible.builtin.apt_key:
-      url: http://v.s.cz/info@vitexsoftware.cz.gpg.key
+      url: https://www.vitexsoftware.cz/info@vitexsoftware.cz.gpg.key
       state: present
   - name: "add repo"
     apt_repository:
