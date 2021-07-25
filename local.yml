@@ -118,7 +118,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: Install prince
+    - name: Install deb package
       apt:
         deb: https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.4/kse_5.4.4_all.deb
 
