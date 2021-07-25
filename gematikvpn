@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo openconnect --protocol=gp  --os=win --disable-ipv6 --csd-wrapper=/usr/libexec/openconnect/hipreport.sh vpn.gematik.de -s 'vpn-slice -v build.top.local 172.30.64.0/24 192.168.255.0/24 192.168.234.0/24 192.168.232.0/24 192.168.110.0/24 192.168.230.0/24'
