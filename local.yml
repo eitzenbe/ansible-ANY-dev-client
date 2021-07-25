@@ -78,7 +78,7 @@
         update_cache: yes
 
 
-- name: Install python packages
+- name: "Install python packages"
   pip:
     name:
       - https://github.com/dlenski/vpn-slice/archive/master.zip
