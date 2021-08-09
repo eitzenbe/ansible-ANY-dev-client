@@ -17,6 +17,7 @@
           - openssh-client
           - openssl
           - ubuntu-desktop
+          - expect
         state: present
         update_cache: yes
 
