@@ -39,11 +39,12 @@
   hosts: all
   become: yes
   tasks:
-    - name: "ensure ubuntu mozilla components is installed"
+    - name: "ensure ubuntu communications components is installed"
       apt:
         name:
           - firefox
           - thunderbird
+          - gajim
         state: present
         update_cache: yes
 
