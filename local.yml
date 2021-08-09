@@ -16,6 +16,7 @@
           - wget
           - openssh-client
           - openssl
+          - libnss3-tools
           - ubuntu-desktop
           - expect
         state: present
