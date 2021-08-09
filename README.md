@@ -19,7 +19,7 @@ sudo ansible-pull -vv -U https://github.com/eitzenbe/ansible-linux-dev-client -i
 As next step connect to the VPN by running 
 
 ```
-gematikvpn_simple
+sudo gematikvpn_simple
 ```
 
-After supplying username, password and RSA token, this will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
+First sudo asks for your password and then openconnect asks for username, password and RSA token, this will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
