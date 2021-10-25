@@ -1,8 +1,8 @@
-# ansible-linux-dev-client
+# ansible-*-dev-client
 Ansible playbook to setup a sophisticated development environment
 
 
-## Step 1 - Setup base Ubuntu system and install ansible
+## ansible-linux-dev-client
 
 After setting up a minimum Ubuntu desktop system install ansible by
 
@@ -26,7 +26,13 @@ First sudo asks for your password and then openconnect asks for username, passwo
 
 # ansible-mac-dev-client
 
-Currently in the working and definitely needs some more love and sweat but basicall it will be working with same procedure as with linux but dont do root sudo and use local-mac.yml
+Currently in the working and definitely needs some more love and sweat but basicall it works with the same procedure as with linux but dont do root sudo and use local-mac.yml as last parameter.
+
+Before running ansible pull make sure to install ansible via brew
+
+```shell
+brew install ansible git
+``
 
 ```shell
 ansible-pull -vv -U https://github.com/eitzenbe/ansible-linux-dev-client -i localhost, -c local local-mac.yml
