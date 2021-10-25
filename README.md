@@ -32,7 +32,8 @@ Before running ansible pull make sure to install ansible via brew
 
 ```shell
 brew install ansible git
-``
+```
+
 
 ```shell
 ansible-pull -vv -U https://github.com/eitzenbe/ansible-linux-dev-client -i localhost, -c local local-mac.yml
