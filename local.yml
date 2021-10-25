@@ -71,6 +71,7 @@
         name:
           - wireshark
           - tshark
+          - termshark
           - maven
           - openjdk-11-jdk
           - plantuml
