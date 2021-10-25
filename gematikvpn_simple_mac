@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo openconnect --protocol=gp  --os=win --disable-ipv6 --csd-wrapper=/usr/local/Cellar/openconnect/8.10/libexec/openconnect/hipreport.sh vpn.gematik.de
