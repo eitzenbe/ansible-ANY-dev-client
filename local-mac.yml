@@ -7,4 +7,6 @@
         name: openjdk@11
     - name: "Install firefox"
       community.general.homebrew_cask:
-        name: firefox
+        name: 
+          - firefox
+          - openconnect
