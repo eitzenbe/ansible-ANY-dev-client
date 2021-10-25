@@ -2,11 +2,12 @@
 - name: "Install basic dev software"
   hosts: all
   tasks:
-    - name: "Install openjdk11"
+    - name: "Install basic sw via brew"
       community.general.homebrew:
-        name: openjdk@11
-    - name: "Install firefox"
+        name:
+          - openjdk@11
+          - openconnect
+    - name: "Install basic sw via brew casks"
       community.general.homebrew_cask:
         name: 
           - firefox
-          - openconnect
