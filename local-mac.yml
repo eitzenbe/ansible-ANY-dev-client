@@ -1,0 +1,10 @@
+---
+- name: "Install basic dev software"
+  hosts: all
+  tasks:
+    - name: "Install openjdk11"
+      community.general.homebrew:
+        name: openjdk@11
+    - name: "Install firefox"
+      community.general.homebrew_cask:
+        name: firefox
