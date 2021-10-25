@@ -60,5 +60,5 @@
         src: gematikvpn_simple
         dest: /usr/bin/gematikvpn_simple
         owner: root
-        group: root
+        group: wheel
         mode: u=rwx,g=rx,o=rx
