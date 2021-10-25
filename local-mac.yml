@@ -53,13 +53,11 @@
 
 - name: "install simple gematik vpn"
   hosts: all
-  become: yes
   tasks:
     - name: "copy vpn script"
       ansible.builtin.copy:
         src: gematikvpn_simple_mac
         # mac disallows write access to /usr/bin so we go to /usr/local/bin
         dest: /usr/local/bin/gematikvpn_simple
-        owner: root
-        group: wheel
+        group: admin
         mode: u=rwx,g=rx,o=rx
