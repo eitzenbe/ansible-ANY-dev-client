@@ -24,7 +24,7 @@ sudo gematikvpn_simple
 
 First sudo asks for your password and then openconnect asks for username, password and RSA token, this will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
 
-# ansible-mac-dev-client
+## ansible-mac-dev-client
 
 Currently in the working and definitely needs some more love and sweat but basicall it works with the same procedure as with linux but dont do root sudo and use local-mac.yml as last parameter.
 
