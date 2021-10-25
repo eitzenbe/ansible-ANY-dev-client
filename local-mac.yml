@@ -53,6 +53,7 @@
 
 - name: "install simple gematik vpn"
   hosts: all
+  become: yes
   tasks:
     - name: "copy vpn script"
       ansible.builtin.copy:
