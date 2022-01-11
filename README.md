@@ -28,6 +28,12 @@ First sudo asks for your password and then openconnect asks for username, passwo
 
 Currently in the working and definitely needs some more love and sweat but basicall it works with the same procedure as with linux but dont do root sudo and use local-mac.yml as last parameter.
 
+First we need to install homebrew. For more details see https://brew.sh/index_de. If you feel brave and/or stupid, try the following script. It is recommend to never pipe any download directly into bash, so be advised!
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 Before running ansible pull make sure to install ansible via brew
 
 ```shell
