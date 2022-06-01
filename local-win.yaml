@@ -71,9 +71,9 @@
         dest: 'c:\temp\DockerDesktopInstaller.exe'
       when: not docker_downloaded.stat.exists
       
-    - name: Install Docker Desktop
-      ansible.windows.win_shell: 'c:\temp\DockerDesktopInstaller.exe install --quiet'
-      when: not docker_installed.stat.exists
+#    - name: Install Docker Desktop
+#      ansible.windows.win_shell: 'c:\temp\DockerDesktopInstaller.exe install --quiet'
+#      when: not docker_installed.stat.exists
         
         
 # uninstall geht über absent muss aber teilweise zweimal gemacht werden z.b.
