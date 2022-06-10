@@ -13,7 +13,7 @@ sudo apt install ansible git
 and execute the public playbook to initialize and install all publicly available products for your laptop
 
 ```shell
-sudo ansible-pull -vv -U https://github.com/eitzenbe/ansible-linux-dev-client -i localhost, -c local
+sudo ansible-pull -vv -U https://github.com/eitzenbe/ansible-ANY-dev-client -i localhost, -c local Linux/local-linux.yml
 ```
 
 As next step connect to the VPN by running 
@@ -42,6 +42,6 @@ brew install ansible git
 
 
 ```shell
-ansible-pull -vv -U https://github.com/eitzenbe/ansible-linux-dev-client -i localhost, -c local local-mac.yml
+ansible-pull -vv -U https://github.com/eitzenbe/ansible-ANY-dev-client -i localhost, -c local MacOs/local-mac.yml
 ```
 
