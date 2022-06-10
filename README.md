@@ -2,7 +2,7 @@
 Ansible playbook to setup a sophisticated development environment
 
 
-## ansible-linux-dev-client
+## Linux
 
 After setting up a minimum Ubuntu desktop system install ansible by
 
@@ -24,7 +24,7 @@ sudo gematikvpn_simple
 
 First sudo asks for your password and then openconnect asks for username, password and RSA token, this will connect you with the intranet and will allow you to proceed with the company internal configuration/installation.
 
-## ansible-mac-dev-client
+## Mac
 
 Currently in the working and definitely needs some more love and sweat but basicall it works with the same procedure as with linux but dont do root sudo and use local-mac.yml as last parameter.
 
@@ -45,3 +45,16 @@ brew install ansible git
 ansible-pull -vv -U https://github.com/eitzenbe/ansible-ANY-dev-client -i localhost, -c local MacOs/local-mac.yml
 ```
 
+## Windows
+
+Before running ansible playbooks you need to install WSL/Ubuntu and then start the local Ubuntu bash and run the ansible script there:
+
+
+```shell
+# clone or update your git repo
+git clone https://github.com/eitzenbe/ansible-ANY-dev-client
+cd ansible-ANY-dev-client
+# provide your windows account credentials in subsequent call
+Windows/ansible.sh PWD WINUSER
+# and select the appropriate playbook (for default use local-win.yml)
+```
