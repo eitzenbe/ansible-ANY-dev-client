@@ -104,17 +104,17 @@
   hosts: all
   become: yes
   roles:
-    - pixelart.chrome
-    - ngetchell.vscode
-    - geerlingguy.docker
-    - alvistack.libreoffice
-    - ngetchell.ms_teams
-    - role: jetune.gradle
+    - Roles/pixelart.chrome
+    - Roles/ngetchell.vscode
+    - Roles/geerlingguy.docker
+    - Roles/alvistack.libreoffice
+    - Roles/ngetchell.ms_teams
+    - role: Roles/jetune.gradle
       vars:
         v_major: 5
         v_minor: 5.1
         is_default: true
-    - role: gantsign.intellij
+    - role: Roles/gantsign.intellij
       vars:
         intellij_edition: ultimate
 
@@ -136,4 +136,4 @@
         owner: root
         group: root
         mode: u=rwx,g=rx,o=rx
-    
+

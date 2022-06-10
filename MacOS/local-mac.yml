@@ -12,10 +12,10 @@
           - expect
 - name: "Install mozilla components"
   hosts: all
-  tasks:  
+  tasks:
     - name: "ensure mozilla communications apps are installed"
       community.general.homebrew_cask:
-        name: 
+        name:
           - firefox
           - thunderbird
           # - gajim not avail for mac
@@ -35,10 +35,10 @@
           - gradle
 - name: "Install non native software components"
   hosts: all
-  tasks:  
+  tasks:
     - name: "ensure non native software components are installed"
       community.general.homebrew_cask:
-        name: 
+        name:
           # TODO chrome
           # TODO vscode
           - docker
@@ -47,7 +47,7 @@
           # gradle is installed in segment above
           - intellij-idea
           - keystore-explorer
-          
+
 # TODO set JAVA home for all shells
 # TODO install vpn slice (and maybe need to install pip before
 
@@ -56,7 +56,7 @@
   tasks:
     - name: "copy vpn script"
       ansible.builtin.copy:
-        src: gematikvpn_simple_mac
+        src: gematikvpn_simple
         # mac disallows write access to /usr/bin so we go to /usr/local/bin
         dest: /usr/local/bin/gematikvpn_simple
         group: admin
