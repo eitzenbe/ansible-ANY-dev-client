@@ -41,7 +41,7 @@
       win_chocolatey:
         name:
           - gimp
-          - paint.net
+          # - paint.net
           - vlc
           - inkscape
           - plantuml
