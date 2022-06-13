@@ -10,18 +10,18 @@ if [ $# -lt 2 ]; then
     echo "Please specify password AND windows account username or set it via env var WINUSER!"
     exit
   fi
-  $LOCAL_WINUSER="$WINUSER"
+  LOCAL_WINUSER="$WINUSER"
 else
-  $LOCAL_WINUSER="$2"
+  LOCAL_WINUSER="$2"
 fi
 
 echo
 echo "Creating ansible hosts file as hosts.ansible in folder '$PWD' ..."
 HOSTIP=$(grep -vE "^#" /etc/resolv.conf | grep -m 1 nameserver |awk '{print $2}')
 
-echo "[win]\nLOCALWINIP\n[win:vars]\nansible_user=LOCALWINUSER\nansible_password=LOCALWINUSERPWD\nansible_connection=winrm\nansible_winrm_server_cert_validation=ignore\n" |\
+echo -e "[win]\nLOCALWINIP\n[win:vars]\nansible_user=LOCALWINUSER\nansible_password=LOCALWINPWD\nansible_connection=winrm\nansible_winrm_server_cert_validation=ignore\n" |\
 sed "s/LOCALWINIP/$HOSTIP/g" | \
-sed "s/LOCALWINUSERPWD/$1/g" | \
+sed "s/LOCALWINPWD/$1/g" | \
 sed "s/LOCALWINUSER/$LOCAL_WINUSER/g" > hosts.ansible
 
 INDEX=1
@@ -49,9 +49,9 @@ echo Now executing ${YAMLFILES[$PBIDX]} ...
 echo
 
 # call relevant ansible
-ansible-playbook -i hosts.ansible ${YAMLFILES[$PBIDX]}
+ansible-playbook -i hosts.ansible ${YAMLFILES[$PBIDX]} -c winrm
 
 echo
 echo Removing hosts.ansible...
 echo
-rm hosts.ansible
+#rm hosts.ansible
