@@ -29,7 +29,8 @@
           - curl
           - telnet
           - putty
-          - microsoft-windows-terminal
+          # - microsoft-windows-terminal
+          # needs a framework to be installed Microsoft.VCLibs.140.00.UWPDesktop
           - winscp.install
           - gpg4win
           - keepass.install
