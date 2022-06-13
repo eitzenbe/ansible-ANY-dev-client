@@ -49,7 +49,7 @@ echo Now executing ${YAMLFILES[$PBIDX]} ...
 echo
 
 # call relevant ansible
-ls -al  ${YAMLFILES[$PBIDX]}
+ansible-playbook -i hosts.ansible ${YAMLFILES[$PBIDX]}
 
 echo
 echo Removing hosts.ansible...
